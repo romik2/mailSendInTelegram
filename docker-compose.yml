@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  notification_mailing:
+    container_name: notification_mailing
+    build:
+      context: .
+      dockerfile: ./.dockerfile
+      args:
+        IMAP_ENV: imap
+        EMAIL_ENV: email
+        PASS_ENV: pass
+        TOCKEN_TELEGRAN_ENV: tocken
+        CHAT_ID_ENV: id
+        DB_ENV: 'False'
+        DOMAIN_ENV: http://127.0.0.1:8001/
+    ports:
+      - '8806:8001'
+    volumes:
+      - ./instance:/app/instance
+    
