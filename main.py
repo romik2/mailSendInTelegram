@@ -54,7 +54,7 @@ if os.path.isfile(config_path):
     os.system("python wsgi.py &")
     while True:
         main()
-        time.sleep(1)
+        time.sleep(15)
 else:
     domain = ''
     imap = sys.argv[1]
