@@ -6,9 +6,9 @@ def imap_connect(host, email, password):
     imap.login(email, password)
     return imap
 
-def messages_list(imap):
+def messages_list(imap, folder):
     messages_list = []
-    status, messages = imap.select("INBOX")
+    status, messages = imap.select(folder)
     retcode, messages = imap.search(None, '(UNSEEN)')
 
     if status != "OK": exit("Incorrect mail box")
