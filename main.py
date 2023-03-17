@@ -10,7 +10,6 @@ import random
 import string
 import sys
 import os
-import markdown
 
 config_path = 'settings.ini'
 
@@ -57,7 +56,7 @@ if os.path.isfile(config_path):
     os.system("python wsgi.py &")
     while True:
         main()
-        time.sleep(30)
+        time.sleep(1)
 else:
     domain = ''
     imap = sys.argv[1]

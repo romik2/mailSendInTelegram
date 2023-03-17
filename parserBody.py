@@ -1,4 +1,3 @@
-import html2text
 import email, email.parser, email.policy
 
 def header_decode(header):
@@ -16,10 +15,7 @@ def msg2bodyText(msg):
     ddd = msg.get_content()
 
     if msg.get_content_subtype() == "html":
-        try:
-            ddd = html2text.html2text(ddd)
-        except:
-            print("error in html2text")
+        ddd = msg.get_payload(decode=True)
 
     return ddd
 
