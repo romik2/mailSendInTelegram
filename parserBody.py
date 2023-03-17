@@ -1,3 +1,4 @@
+import markdown
 import email, email.parser, email.policy
 
 def header_decode(header):
@@ -12,10 +13,13 @@ def msg2bodyText(msg):
     if msg.get_content_maintype() != "text":
         return None
 
-    ddd = msg.get_content()
-
+    ddd = bytes('<meta charset="utf-8">' + markdown.markdown(msg.get_content()), 'utf-8')
+    
     if msg.get_content_subtype() == "html":
-        ddd = msg.get_payload(decode=True)
+        try:
+            ddd = bytes('<meta charset="utf-8">', 'utf-8') + msg.get_payload(decode=True)
+        except:
+            print("error in html2text")
 
     return ddd
 
@@ -34,6 +38,8 @@ def email2Text(rfc822mail):
                 ddd = msg2bodyText(part)
                 if ddd is not None and isinstance(ddd, str):
                     mail_value["body"] = mail_value["body"] + ddd
+                elif isinstance(ddd, bytes):
+                    mail_value["body"] = ddd
         else:
             ddd = msg2bodyText(msg_data)
             mail_value["body"] = ddd

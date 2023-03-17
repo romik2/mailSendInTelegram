@@ -9,7 +9,7 @@ ARG DB_ENV
 ARG FOLDER_ENV
 ARG DOMAIN_ENV
 
-RUN pip install html2text requests  Flask-SQLAlchemy markdown
+RUN pip install requests Flask-SQLAlchemy markdown
 COPY . /app
 WORKDIR /app
 EXPOSE 8001
