@@ -67,5 +67,5 @@ else:
     folder = sys.argv[7]
     if (db == "True"):
         domain =  sys.argv[8]
-    conf.createConfig(config_path, imap, email, password, token_telegram, chat_id, db, domain)
+    conf.createConfig(config_path, imap, email, password, token_telegram, chat_id, db, folder, domain)
     main()

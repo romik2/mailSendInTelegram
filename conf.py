@@ -1,6 +1,6 @@
 import configparser
 
-def createConfig(path, imap_host, email, password, token_telegram, chat_id, db, domain):
+def createConfig(path, imap_host, email, password, token_telegram, chat_id, db, folder, domain):
     """
     Create a config file
     """
@@ -12,6 +12,7 @@ def createConfig(path, imap_host, email, password, token_telegram, chat_id, db, 
     config.set("accounts", "token_telegram", token_telegram)
     config.set("accounts", "chat_id", chat_id)
     config.set("accounts", "db", db)
+    config.set("accounts", "folder", folder)
     config.set("accounts", "domain", domain)
     
     with open(path, "w") as config_file:
