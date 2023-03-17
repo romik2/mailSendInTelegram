@@ -32,7 +32,7 @@ def email2Text(rfc822mail):
         if msg_data.is_multipart():
             for part in msg_data.walk():
                 ddd = msg2bodyText(part)
-                if ddd is not None:
+                if ddd is not None and isinstance(ddd, str):
                     mail_value["body"] = mail_value["body"] + ddd
         else:
             ddd = msg2bodyText(msg_data)

@@ -37,9 +37,10 @@ def main():
     password = parser.get('accounts', 'password')
     token_telegram = parser.get('accounts', 'token_telegram')
     chat_id = parser.get('accounts', 'chat_id')
+    folder = parser.get('accounts', 'folder')
     # db = parser.get('accounts', 'db')
     imap = mail.imap_connect(imap, email, password)
-    messagesList = mail.messages_list(imap)
+    messagesList = mail.messages_list(imap, folder)
     for message in messagesList:
         # if (db == "False"):
         #         text = ('От кого: {} \nТема письма: {} \nТекст письма: {}').format(message['from'], message['subject'], message['body'])
@@ -63,7 +64,8 @@ else:
     token_telegram = sys.argv[4]
     chat_id = sys.argv[5]
     db = sys.argv[6]
+    folder = sys.argv[7]
     if (db == "True"):
-        domain =  sys.argv[7]
+        domain =  sys.argv[8]
     conf.createConfig(config_path, imap, email, password, token_telegram, chat_id, db, domain)
     main()

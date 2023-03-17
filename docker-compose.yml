@@ -13,6 +13,7 @@ services:
         TOCKEN_TELEGRAN_ENV: tocken
         CHAT_ID_ENV: id
         DB_ENV: 'False'
+        FOLDER_ENV: INBOX
         DOMAIN_ENV: http://127.0.0.1:8001/
     ports:
       - '8806:8001'
