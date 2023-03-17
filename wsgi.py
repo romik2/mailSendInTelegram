@@ -10,6 +10,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         params = dict ( [ tuple ( p.split("=") ) for p in self.path[i:].split ( "&" ) ] )
         with flask_conn.app.app_context():
             messagesRes = messages.Messages.query.filter_by(key=params['key']).first()
+            print(messagesRes.text_message)
+        print(messagesRes)
         self.send_response(HTTPStatus.OK)
         self.send_header('Content-Type', 'text/html')
         self.end_headers()
